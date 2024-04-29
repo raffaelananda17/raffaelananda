@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const port = 8080
+const mysql = require(mysql2)
 
 app.get('/mahasiswa/:nim', (req,res)=>{
     const nim = req.params.nim
 
     res.send(`Mahasiswa dengan nim ${nim} di temukan`)
 });
-
 
 app.get('/mahasiswa/:nim/:semester', (req,res)=>{
 
@@ -16,7 +16,6 @@ app.get('/mahasiswa/:nim/:semester', (req,res)=>{
 
     res.send(`Mahasiswa dengan : ${nim} semester :${semester} di temukan`)
 });
-
 
 app.get('/get-mahasiswa-by-nim', (req, res)=>{
     const nim = req.query.nim
@@ -44,26 +43,18 @@ app.post('/mahasiswa', (req,res)=>{
     res.send(msg);
 })
 
-
-
-
-
-// app.get('/', (req, res) =>{
-//     res.send('Menyala Abangkuhh')
-// });
-
-// app.post ('/', (req, res)=>{
-//     res.send('post data')
-// })
-
-// app.put ('/', (req, res)=>{
-//     res.send('upload sucsesful')
-// })
-
-// app.delete ('/', (req, res)=>{
-//     res.send('delete sucsesful')
-// })
-
-app.listen(port, () =>{
-    console.log(`server berjalan pada localhost:${port}`)
+app.get('/', (req, res) =>{
+    res.send('Menyala Abangkuhh')
 });
+
+app.post ('/', (req, res)=>{
+    res.send('post data')
+})
+
+app.put ('/', (req, res)=>{
+    res.send('upload sucsesful')
+})
+
+app.delete ('/', (req, res)=>{
+    res.send('delete sucsesful')
+})
